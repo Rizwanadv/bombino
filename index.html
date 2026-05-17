@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bombino Machin Corp — Auto Transport & Logistics</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0b0c0e;
+  --deep: #101215;
+  --surface: #15181d;
+  --card: #1a1e25;
+  --border: rgba(255,255,255,0.06);
+  --border-s: rgba(255,255,255,0.11);
+  --orange: #E8622A;
+  --orange-dim: rgba(232,98,42,0.13);
+  --orange-glow: rgba(232,98,42,0.06);
+  --amber: #D4952A;
+  --amber-dim: rgba(212,149,42,0.12);
+  --white: #F4F1EC;
+  --muted: #7A7D87;
+  --soft: #B8BBC4;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:rgba(11,12,14,0.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;color:var(--white)}
+.logo span{color:var(--orange)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.76rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color .25s}
+.nav-links a:hover{color:var(--white)}
+.nav-btn{background:var(--orange);color:#fff;padding:9px 20px;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .25s}
+.nav-btn:hover{background:#f0713a}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:130px 60px 80px;gap:70px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;left:-300px;bottom:-200px;width:800px;height:800px;background:radial-gradient(ellipse,rgba(232,98,42,0.07) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(212,149,42,0.04) 0%,transparent 65%);pointer-events:none}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.67rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(232,98,42,0.3);padding:6px 14px;border-radius:2px;margin-bottom:28px}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,6vw,6.2rem);line-height:.93;letter-spacing:-0.02em;margin-bottom:28px}
+.hero h1 em{font-style:normal;color:var(--orange);display:block}
+.hero h1 small{font-style:normal;color:var(--amber);display:block;font-size:0.62em}
+
+.hero-sub{font-size:1rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:420px;margin-bottom:44px}
+.hero-sub strong{color:var(--soft);font-weight:400}
+
+.hero-btns{display:flex;gap:12px}
+.btn-o{background:var(--orange);color:#fff;padding:13px 30px;font-size:0.76rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .25s}
+.btn-o:hover{background:#f0713a}
+.btn-g{background:transparent;color:var(--muted);padding:13px 30px;font-size:0.76rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border-s);border-radius:2px;transition:color .25s,border-color .25s}
+.btn-g:hover{color:var(--white);border-color:rgba(255,255,255,0.22)}
+
+/* HERO RIGHT – truck scene */
+.hero-right{display:flex;flex-direction:column;gap:0}
+.map-card{background:var(--card);border:1px solid var(--border-s);border-radius:5px;overflow:hidden}
+.map-header{background:var(--surface);padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.map-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 2s infinite}
+.map-header span{font-size:0.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.map-header .live{margin-left:auto;background:rgba(232,98,42,0.15);color:var(--orange);border:1px solid rgba(232,98,42,0.3);font-size:0.57rem;letter-spacing:.2em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.map-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+.route{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:3px}
+.route-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ri-us{background:var(--orange-dim);border:1px solid rgba(232,98,42,0.25)}
+.ri-uae{background:var(--amber-dim);border:1px solid rgba(212,149,42,0.25)}
+.ri-truck{background:rgba(255,255,255,0.04);border:1px solid var(--border)}
+.route-icon svg{width:14px;height:14px;stroke-width:2}
+.route-text{flex:1}
+.rt-label{font-size:0.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.rt-val{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--white)}
+.route-status{font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px}
+.s-active{background:rgba(52,199,89,0.12);color:#4CD964;border:1px solid rgba(52,199,89,0.25)}
+.s-new{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(212,149,42,0.3)}
+.s-transit{background:var(--orange-dim);color:var(--orange);border:1px solid rgba(232,98,42,0.3)}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);margin-top:3px;gap:3px}
+.s-box{background:var(--surface);border:1px solid var(--border);padding:16px;text-align:center}
+.s-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--orange);line-height:1}
+.s-lbl{font-size:0.59rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:4px}
+
+/* TICKER */
+.ticker{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--black);padding:12px 0}
+.ticker-track{display:inline-flex;gap:60px;animation:tick 28s linear infinite;white-space:nowrap}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ti{font-family:'Syne',sans-serif;font-weight:700;font-size:0.63rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);flex-shrink:0}
+.ti b{color:var(--orange);margin:0 14px}
+
+/* SECTIONS */
+.sec{padding:110px 60px}
+.stag{display:inline-flex;align-items:center;gap:8px;font-size:0.63rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.stag::after{content:'';display:block;width:36px;height:1px;background:rgba(232,98,42,0.4)}
+.sh{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,3.8vw,3.8rem);line-height:1.05;letter-spacing:-.01em;margin-bottom:56px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.about-body p{font-size:.97rem;line-height:1.95;color:var(--muted);margin-bottom:18px}
+.about-body p strong{color:var(--soft);font-weight:400}
+.pull{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;line-height:1.45;color:var(--white);border-left:3px solid var(--orange);padding-left:22px;margin:32px 0}
+
+.ops-cards{display:flex;flex-direction:column;gap:3px}
+.op-card{background:var(--card);border:1px solid var(--border);padding:26px 28px;display:flex;gap:18px;align-items:flex-start;transition:border-color .3s}
+.op-card:hover{border-color:rgba(232,98,42,0.3)}
+.op-ico{width:42px;height:42px;border-radius:4px;background:var(--orange-dim);border:1px solid rgba(232,98,42,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.op-ico svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.8}
+.op-card h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;color:var(--white);margin-bottom:6px}
+.op-card p{font-size:.82rem;color:var(--muted);line-height:1.7}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.svc-card{background:var(--card);border:1px solid var(--border);padding:38px 32px;position:relative;overflow:hidden;transition:border-color .3s}
+.svc-card:hover{border-color:rgba(232,98,42,0.25)}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-n{font-family:'Syne',sans-serif;font-weight:800;font-size:3.5rem;line-height:1;color:rgba(255,255,255,0.04);margin-bottom:20px}
+.svc-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white);margin-bottom:12px}
+.svc-card p{font-size:.83rem;color:var(--muted);line-height:1.75}
+
+/* UAE EXPANSION */
+.uae-sec{background:var(--surface)}
+.uae-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.uae-badge{display:inline-flex;align-items:center;gap:8px;background:var(--amber-dim);border:1px solid rgba(212,149,42,0.3);padding:6px 14px;border-radius:2px;font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:28px}
+.uae-badge::before{content:'🇦🇪';font-size:.9rem}
+.uae-sec .sh{margin-bottom:24px}
+.uae-sec p{font-size:.97rem;line-height:1.9;color:var(--muted);margin-bottom:16px}
+.uae-sec p strong{color:var(--soft);font-weight:400}
+.uae-points{display:flex;flex-direction:column;gap:3px;margin-top:36px}
+.upt{background:var(--card);border:1px solid var(--border);padding:20px 24px;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.upt:hover{border-color:rgba(212,149,42,0.3)}
+.upt-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);flex-shrink:0}
+.upt p{font-size:.87rem;color:var(--soft);line-height:1.6}
+.upt p strong{color:var(--white);font-weight:500}
+
+.uae-visual{background:var(--card);border:1px solid var(--border-s);border-radius:5px;overflow:hidden}
+.uv-head{background:var(--deep);padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.uv-head span{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.uv-body{padding:22px}
+.corridor{display:flex;flex-direction:column;gap:10px}
+.cor-row{display:flex;align-items:center;gap:12px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:3px}
+.cor-flag{font-size:1.3rem;width:36px;text-align:center}
+.cor-info{flex:1}
+.cor-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;color:var(--white)}
+.cor-sub{font-size:.7rem;color:var(--muted);margin-top:2px}
+.cor-arr{color:var(--orange);font-size:1rem}
+.uv-note{margin-top:14px;padding:14px;background:var(--amber-dim);border:1px solid rgba(212,149,42,0.2);border-radius:3px}
+.uv-note p{font-size:.78rem;color:var(--amber);line-height:1.6}
+
+/* TECH */
+.tech-sec{background:var(--deep)}
+.tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
+.tech-card{background:var(--card);border:1px solid var(--border);padding:36px 32px;transition:border-color .3s}
+.tech-card:hover{border-color:rgba(232,98,42,0.2)}
+.tech-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--white);margin-bottom:10px}
+.tech-logo span{color:var(--orange)}
+.tech-card p{font-size:.85rem;color:var(--muted);line-height:1.75}
+.tech-tag{display:inline-flex;margin-top:16px;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(232,98,42,0.25);padding:4px 10px;border-radius:2px}
+
+/* CTA */
+.cta{background:var(--orange);padding:80px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,3.2vw,3.2rem);line-height:1.05;color:#fff;max-width:520px}
+.btn-wh{background:#fff;color:var(--orange);padding:15px 38px;font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;white-space:nowrap;transition:background .25s}
+.btn-wh:hover{background:#ffe8de}
+
+/* CONTACT */
+.contact-sec{background:var(--black);padding:80px 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}
+.ct-block h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.ct-block p{font-size:.88rem;color:var(--muted);line-height:1.8}
+.ct-block a{color:var(--soft);text-decoration:none}
+.ct-block a:hover{color:var(--white)}
+
+footer{background:var(--black);border-top:1px solid var(--border);padding:32px 60px;display:flex;justify-content:space-between;align-items:center}
+.fl{font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
+.fl span{color:var(--orange)}
+footer p{font-size:.68rem;color:var(--muted)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:960px){
+  nav{padding:16px 22px}
+  .nav-links,.nav-btn{display:none}
+  .hero{grid-template-columns:1fr;padding:105px 22px 56px;gap:40px}
+  .about-grid,.uae-inner,.svc-grid{grid-template-columns:1fr;gap:40px}
+  .tech-grid{grid-template-columns:1fr}
+  .sec{padding:72px 22px}
+  .cta{flex-direction:column;padding:56px 22px}
+  .contact-sec{grid-template-columns:1fr;padding:60px 22px;gap:36px}
+  footer{flex-direction:column;gap:12px;padding:28px 22px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Bombino<span>.</span>Machin</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#uae">UAE Expansion</a></li>
+    <li><a href="#tech">Technology</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="eyebrow">Auto Transport & Logistics</div>
+    <h1>
+      MOVING<br>
+      <em>VEHICLES.</em>
+      <small>COAST TO COAST — & BEYOND.</small>
+    </h1>
+    <p class="hero-sub">
+      <strong>Bombino Machin Corp</strong> operates as a licensed common and contract carrier across the continental US — and is now expanding into the <strong>UAE market</strong>.
+    </p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-o">Our Services</a>
+      <a href="#uae" class="btn-g">UAE Expansion</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="map-card">
+      <div class="map-header">
+        <div class="map-dot"></div>
+        <span>Live Fleet Operations</span>
+        <div class="live">Active</div>
+      </div>
+      <div class="map-body">
+        <div class="route">
+          <div class="route-icon ri-us">
+            <svg viewBox="0 0 24 24"><path stroke="var(--orange)" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline stroke="var(--orange)" points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="route-text">
+            <div class="rt-label">Origin Hub</div>
+            <div class="rt-val">Hialeah, Florida</div>
+          </div>
+          <span class="route-status s-active">Base</span>
+        </div>
+        <div class="route">
+          <div class="route-icon ri-truck">
+            <svg viewBox="0 0 24 24" stroke="var(--soft)"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div class="route-text">
+            <div class="rt-label">Current Route</div>
+            <div class="rt-val">FL → CA Interstate</div>
+          </div>
+          <span class="route-status s-transit">In Transit</span>
+        </div>
+        <div class="route">
+          <div class="route-icon ri-uae">
+            <svg viewBox="0 0 24 24"><circle stroke="var(--amber)" cx="12" cy="12" r="10"/><line stroke="var(--amber)" x1="2" y1="12" x2="22" y2="12"/><path stroke="var(--amber)" d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="route-text">
+            <div class="rt-label">New Market</div>
+            <div class="rt-val">Dubai, UAE 🇦🇪</div>
+          </div>
+          <span class="route-status s-new">Expanding</span>
+        </div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="s-box"><div class="s-num">US</div><div class="s-lbl">Licensed Carrier</div></div>
+      <div class="s-box"><div class="s-num">48</div><div class="s-lbl">States Covered</div></div>
+      <div class="s-box"><div class="s-num">UAE</div><div class="s-lbl">Expanding Now</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ti">Auto Transport <b>✦</b></span>
+    <span class="ti">Continental US Operations <b>✦</b></span>
+    <span class="ti">Common & Contract Carrier <b>✦</b></span>
+    <span class="ti">Individual & Dealership Moves <b>✦</b></span>
+    <span class="ti">UAE Market Expansion <b>✦</b></span>
+    <span class="ti">Car Ship IO · Rose Rocket · MoveCars <b>✦</b></span>
+    <span class="ti">Hialeah, Florida USA <b>✦</b></span>
+    <span class="ti">Auto Transport <b>✦</b></span>
+    <span class="ti">Continental US Operations <b>✦</b></span>
+    <span class="ti">Common & Contract Carrier <b>✦</b></span>
+    <span class="ti">Individual & Dealership Moves <b>✦</b></span>
+    <span class="ti">UAE Market Expansion <b>✦</b></span>
+    <span class="ti">Car Ship IO · Rose Rocket · MoveCars <b>✦</b></span>
+    <span class="ti">Hialeah, Florida USA <b>✦</b></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="sec" style="background:var(--surface)">
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <div class="stag">About Us</div>
+      <div class="sh">Carriers You<br>Can Count On.</div>
+      <p>Bombino Machin Corp is a <strong>licensed motor carrier</strong> headquartered in Hialeah, Florida. We operate as both a common and contract carrier, specializing in the transport of automobiles and motor vehicles across the continental United States.</p>
+      <div class="pull">From individual owners shipping a single vehicle to dealerships managing fleet movements — we deliver with reliability and precision.</div>
+      <p>We serve individuals relocating across the country, automotive dealerships managing inventory, and commercial clients with recurring transport needs. Our operations are backed by industry-grade logistics platforms and real-time fleet tracking.</p>
+    </div>
+    <div class="ops-cards reveal">
+      <div class="op-card">
+        <div class="op-ico">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div>
+          <h4>Auto Transport</h4>
+          <p>Safe and insured transport of personal and commercial vehicles across all 48 continental US states via open and enclosed carriers.</p>
+        </div>
+      </div>
+      <div class="op-card">
+        <div class="op-ico">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <h4>Dealership Logistics</h4>
+          <p>Dedicated fleet management for automotive dealerships — handling high-volume vehicle transfers, lot-to-lot moves, and auction pickups.</p>
+        </div>
+      </div>
+      <div class="op-card">
+        <div class="op-ico">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h4>Real-Time Tracking</h4>
+          <p>Clients get live visibility into their shipment status through our integrated freight management platforms — no guessing, ever.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="sec" style="background:var(--deep)">
+  <div class="stag reveal">What We Do</div>
+  <div class="sh reveal">Full-Scope<br>Transport Services.</div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <div class="svc-n">01</div>
+      <h3>Open Car Transport</h3>
+      <p>The most cost-effective method for standard vehicle transport. Suitable for everyday cars, trucks, and SUVs moving between any two points in the continental US.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-n">02</div>
+      <h3>Enclosed Transport</h3>
+      <p>Premium enclosed hauling for luxury, classic, and high-value vehicles requiring maximum protection from weather and road debris during transit.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-n">03</div>
+      <h3>Dealership Fleet Moves</h3>
+      <p>Scalable, scheduled vehicle transfers for dealerships — from single-unit trades to full fleet relocations across multiple states.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-n">04</div>
+      <h3>Door-to-Door Delivery</h3>
+      <p>We pick up and deliver directly to your location — home, office, or dealership lot — anywhere within our operational territory.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-n">05</div>
+      <h3>Terminal-to-Terminal</h3>
+      <p>Drop off and collect at our designated terminal locations for a streamlined, efficient option with flexible scheduling.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-n">06</div>
+      <h3>Contract Carrier</h3>
+      <p>Dedicated contract arrangements for businesses with recurring transport needs — consistent capacity, priority scheduling, and volume rates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- UAE EXPANSION -->
+<section id="uae" class="uae-sec sec">
+  <div class="uae-inner">
+    <div class="reveal">
+      <div class="uae-badge">Now Entering the UAE</div>
+      <div class="sh">Taking Our<br>Operations <span style="color:var(--amber)">Global.</span></div>
+      <p>Having built a strong operational foundation across the continental United States, Bombino Machin Corp is now <strong>extending its transport and logistics operations to the UAE market</strong>.</p>
+      <p>The UAE — and Dubai in particular — represents one of the world's most active markets for vehicle import, luxury auto transport, and dealership logistics. We are positioning to serve this market with the same reliability that defines our US operations.</p>
+      <div class="uae-points">
+        <div class="upt">
+          <div class="upt-dot"></div>
+          <p><strong>Vehicle Import Logistics</strong> — Supporting individuals and businesses importing vehicles into the UAE market.</p>
+        </div>
+        <div class="upt">
+          <div class="upt-dot"></div>
+          <p><strong>Dealership Partnerships</strong> — Connecting with UAE automotive dealerships for inventory transport and fleet management.</p>
+        </div>
+        <div class="upt">
+          <div class="upt-dot"></div>
+          <p><strong>Luxury & High-Value Auto Transport</strong> — Enclosed, premium transport suited to the UAE's premium vehicle market.</p>
+        </div>
+        <div class="upt">
+          <div class="upt-dot"></div>
+          <p><strong>US–UAE Corridor</strong> — Facilitating vehicle exports from the United States to the UAE and broader GCC region.</p>
+        </div>
+      </div>
+    </div>
+    <div class="uae-visual reveal">
+      <div class="uv-head">
+        <span>🌐 &nbsp;Operational Corridors</span>
+      </div>
+      <div class="uv-body">
+        <div class="corridor">
+          <div class="cor-row">
+            <div class="cor-flag">🇺🇸</div>
+            <div class="cor-info">
+              <div class="cor-name">Continental United States</div>
+              <div class="cor-sub">48 states · Common & Contract Carrier</div>
+            </div>
+            <div class="cor-arr">✓</div>
+          </div>
+          <div style="text-align:center;padding:8px 0;font-size:.7rem;color:var(--muted);letter-spacing:.1em">↕ &nbsp;EXPANDING CORRIDOR</div>
+          <div class="cor-row" style="border-color:rgba(212,149,42,0.3)">
+            <div class="cor-flag">🇦🇪</div>
+            <div class="cor-info">
+              <div class="cor-name">United Arab Emirates</div>
+              <div class="cor-sub">Dubai · Abu Dhabi · GCC Region</div>
+            </div>
+            <div style="font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);background:var(--amber-dim);border:1px solid rgba(212,149,42,0.3);padding:3px 9px;border-radius:2px">New</div>
+          </div>
+        </div>
+        <div class="uv-note">
+          <p>🚗 &nbsp;The UAE is among the world's highest per-capita vehicle markets — a strategic expansion for premium auto transport services.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section id="tech" class="tech-sec sec">
+  <div class="stag reveal">Powered By</div>
+  <div class="sh reveal">Industry-Grade<br>Logistics Tech.</div>
+  <div class="tech-grid">
+    <div class="tech-card reveal">
+      <div class="tech-logo">Car Ship <span>IO</span></div>
+      <p>We are listed and operate on Car Ship IO's carrier network, giving customers direct access to book transport, verify our credentials, and track shipments in real time through their platform.</p>
+      <span class="tech-tag">Freight Management</span>
+    </div>
+    <div class="tech-card reveal">
+      <div class="tech-logo">Rose <span>Rocket</span></div>
+      <p>Rose Rocket powers our carrier operations management — handling dispatch, freight lifecycle, customer updates, and internal coordination through their purpose-built TMS platform.</p>
+      <span class="tech-tag">Transport Management</span>
+    </div>
+    <div class="tech-card reveal">
+      <div class="tech-logo">Move<span>Cars</span></div>
+      <p>Clients can request quotes, verify our DOT credentials, and initiate bookings through MoveCars — one of the leading carrier directories and freight forwarding hubs in the US auto transport industry.</p>
+      <span class="tech-tag">Carrier Directory</span>
+    </div>
+    <div class="tech-card reveal">
+      <div class="tech-logo" style="font-size:1rem;color:var(--muted)">USDOT <span style="color:var(--orange)">#3791970</span></div>
+      <p>Fully licensed and registered with the United States Department of Transportation. Our USDOT number is publicly verifiable through official federal carrier registries and partner platforms.</p>
+      <span class="tech-tag">Verified & Licensed</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Ready to ship your vehicle or partner with us in the UAE?</h2>
+  <a href="#contact" class="btn-wh">Get a Quote</a>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-sec">
+  <div class="ct-block">
+    <h4>Headquarters</h4>
+    <p>18290 Mediterranean Blvd<br>Apt 502<br>Hialeah, FL 33015<br>United States</p>
+  </div>
+  <div class="ct-block">
+    <h4>Book Transport</h4>
+    <p>
+      <a href="https://www.movecars.com/companies/dot/3791970/bombino-machin-corp" target="_blank">MoveCars Directory</a><br>
+      <a href="https://www.carshipio.com/public/carrier/3791970/bombino-machin-corp" target="_blank">Car Ship IO Profile</a><br>
+      <a href="https://www.roserocket.com/trucking-company/bombino-machin-corp-usdot-3791970" target="_blank">Rose Rocket Profile</a>
+    </p>
+  </div>
+  <div class="ct-block">
+    <h4>UAE Inquiries</h4>
+    <p>For UAE market partnerships,<br>dealership logistics, and<br>GCC expansion opportunities:<br><a href="mailto:info@bombinomachincorp.com">info@bombinomachincorp.com</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="fl">Bombino<span>.</span>Machin Corp</div>
+  <p>© 2021–2026 · Hialeah, FL · USDOT #3791970 · All rights reserved</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 85);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
