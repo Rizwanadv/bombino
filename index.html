@@ -1,508 +1,1138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bombino Machin Corp — Auto Transport & Logistics</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --black: #0b0c0e;
-  --deep: #101215;
-  --surface: #15181d;
-  --card: #1a1e25;
-  --border: rgba(255,255,255,0.06);
-  --border-s: rgba(255,255,255,0.11);
-  --orange: #E8622A;
-  --orange-dim: rgba(232,98,42,0.13);
-  --orange-glow: rgba(232,98,42,0.06);
-  --amber: #D4952A;
-  --amber-dim: rgba(212,149,42,0.12);
-  --white: #F4F1EC;
-  --muted: #7A7D87;
-  --soft: #B8BBC4;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--deep);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bombino Corporation | Industrial, Banking & Security Equipment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --deep: #0d1f3c;
+      --blue: #1a3a6b;
+      --mid-blue: #1e4d96;
+      --accent: #2a7fff;
+      --bright: #4da6ff;
+      --silver: #c8d8e8;
+      --silver-light: #e8f0f8;
+      --silver-dim: #8aa4bc;
+      --white: #f5f9ff;
+      --gold: #c8a84b;
+      --text: #d0e4f4;
+    }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:rgba(11,12,14,0.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
-.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;color:var(--white)}
-.logo span{color:var(--orange)}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:0.76rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color .25s}
-.nav-links a:hover{color:var(--white)}
-.nav-btn{background:var(--orange);color:#fff;padding:9px 20px;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .25s}
-.nav-btn:hover{background:#f0713a}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:130px 60px 80px;gap:70px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;left:-300px;bottom:-200px;width:800px;height:800px;background:radial-gradient(ellipse,rgba(232,98,42,0.07) 0%,transparent 65%);pointer-events:none}
-.hero::after{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(212,149,42,0.04) 0%,transparent 65%);pointer-events:none}
+    html { scroll-behavior: smooth; }
 
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.67rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(232,98,42,0.3);padding:6px 14px;border-radius:2px;margin-bottom:28px}
-.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);animation:blink 2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,6vw,6.2rem);line-height:.93;letter-spacing:-0.02em;margin-bottom:28px}
-.hero h1 em{font-style:normal;color:var(--orange);display:block}
-.hero h1 small{font-style:normal;color:var(--amber);display:block;font-size:0.62em}
+    img { display: block; max-width: 100%; }
 
-.hero-sub{font-size:1rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:420px;margin-bottom:44px}
-.hero-sub strong{color:var(--soft);font-weight:400}
+    /* ── IMAGES ── */
+    .ph-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.9) brightness(0.9);
+    }
+    .ph-wrap {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(26,58,107,0.6), rgba(10,22,40,0.85));
+    }
+    .ph-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,22,40,0) 40%, rgba(6,14,26,0.55) 100%);
+      pointer-events: none;
+    }
 
-.hero-btns{display:flex;gap:12px}
-.btn-o{background:var(--orange);color:#fff;padding:13px 30px;font-size:0.76rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .25s}
-.btn-o:hover{background:#f0713a}
-.btn-g{background:transparent;color:var(--muted);padding:13px 30px;font-size:0.76rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border-s);border-radius:2px;transition:color .25s,border-color .25s}
-.btn-g:hover{color:var(--white);border-color:rgba(255,255,255,0.22)}
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4rem;
+      height: 70px;
+      background: rgba(10,22,40,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(74,166,255,0.12);
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+    .logo span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 2.2rem; }
+    nav a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--silver-dim); text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--bright); }
+    .nav-cta {
+      background: var(--accent); color: var(--white) !important;
+      padding: 0.45rem 1.2rem; border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--bright); }
 
-/* HERO RIGHT – truck scene */
-.hero-right{display:flex;flex-direction:column;gap:0}
-.map-card{background:var(--card);border:1px solid var(--border-s);border-radius:5px;overflow:hidden}
-.map-header{background:var(--surface);padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
-.map-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 2s infinite}
-.map-header span{font-size:0.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.map-header .live{margin-left:auto;background:rgba(232,98,42,0.15);color:var(--orange);border:1px solid rgba(232,98,42,0.3);font-size:0.57rem;letter-spacing:.2em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
-.map-body{padding:18px;display:flex;flex-direction:column;gap:12px}
-.route{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:3px}
-.route-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ri-us{background:var(--orange-dim);border:1px solid rgba(232,98,42,0.25)}
-.ri-uae{background:var(--amber-dim);border:1px solid rgba(212,149,42,0.25)}
-.ri-truck{background:rgba(255,255,255,0.04);border:1px solid var(--border)}
-.route-icon svg{width:14px;height:14px;stroke-width:2}
-.route-text{flex:1}
-.rt-label{font-size:0.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
-.rt-val{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--white)}
-.route-status{font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px}
-.s-active{background:rgba(52,199,89,0.12);color:#4CD964;border:1px solid rgba(52,199,89,0.25)}
-.s-new{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(212,149,42,0.3)}
-.s-transit{background:var(--orange-dim);color:var(--orange);border:1px solid rgba(232,98,42,0.3)}
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(26,58,107,0.55) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(42,127,255,0.1) 0%, transparent 60%),
+        linear-gradient(160deg, #0a1628 0%, #0d1f3c 60%, #0a1628 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(42,127,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42,127,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-line {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(42,127,255,0.3), transparent);
+      animation: lineScan 6s ease-in-out infinite;
+    }
+    @keyframes lineScan {
+      0%   { top: 20%; opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { top: 80%; opacity: 0; }
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 780px; }
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid rgba(42,127,255,0.4);
+      padding: 0.35rem 1rem; margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6.2vw, 5.6rem);
+      line-height: 0.98;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+    .hero-title .accent { color: var(--accent); }
+    .hero-title .silver { color: var(--silver); }
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: 1.1rem; font-weight: 300; line-height: 1.7;
+      color: var(--silver-dim); max-width: 600px;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    .hero-actions {
+      margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--accent); color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.85rem 2.2rem; border: none; cursor: pointer;
+      text-decoration: none; display: inline-block;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--bright); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--silver);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.85rem 2.2rem; border: 1px solid rgba(200,216,232,0.3);
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);margin-top:3px;gap:3px}
-.s-box{background:var(--surface);border:1px solid var(--border);padding:16px;text-align:center}
-.s-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--orange);line-height:1}
-.s-lbl{font-size:0.59rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:4px}
+    .hero-divisions {
+      position: absolute; right: 4rem; bottom: 8%;
+      display: flex; flex-direction: column; gap: 1.1rem;
+      z-index: 2; animation: fadeUp 1s 0.4s ease both;
+      width: 260px;
+    }
+    .hero-div-card {
+      display: flex; align-items: center; gap: 0.8rem;
+      border: 1px solid rgba(42,127,255,0.25);
+      background: rgba(13,31,60,0.55);
+      padding: 0.7rem 0.9rem;
+    }
+    .hero-div-card .ico { font-size: 1.3rem; }
+    .hero-div-card .lbl {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--silver);
+    }
 
-/* TICKER */
-.ticker{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--black);padding:12px 0}
-.ticker-track{display:inline-flex;gap:60px;animation:tick 28s linear infinite;white-space:nowrap}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.ti{font-family:'Syne',sans-serif;font-weight:700;font-size:0.63rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);flex-shrink:0}
-.ti b{color:var(--orange);margin:0 14px}
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-/* SECTIONS */
-.sec{padding:110px 60px}
-.stag{display:inline-flex;align-items:center;gap:8px;font-size:0.63rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
-.stag::after{content:'';display:block;width:36px;height:1px;background:rgba(232,98,42,0.4)}
-.sh{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,3.8vw,3.8rem);line-height:1.05;letter-spacing:-.01em;margin-bottom:56px}
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 4rem; }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--accent);
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      letter-spacing: 0.04em; color: var(--white); line-height: 1;
+    }
+    .section-intro {
+      font-size: 1rem; font-weight: 300; line-height: 1.85;
+      color: var(--silver-dim); max-width: 720px; margin-top: 1.2rem;
+    }
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
-.about-body p{font-size:.97rem;line-height:1.95;color:var(--muted);margin-bottom:18px}
-.about-body p strong{color:var(--soft);font-weight:400}
-.pull{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;line-height:1.45;color:var(--white);border-left:3px solid var(--orange);padding-left:22px;margin:32px 0}
+    /* ── ABOUT / DIVISIONS ── */
+    #about {
+      background: var(--deep);
+    }
+    .about-top {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center;
+      margin-bottom: 4rem;
+    }
+    .about-text p {
+      font-size: 1rem; font-weight: 300; line-height: 1.85;
+      color: var(--silver-dim); margin-top: 1.5rem;
+    }
+    .about-visual {
+      position: relative; height: 380px;
+      border: 1px solid rgba(42,127,255,0.2);
+    }
+    .corner-accent {
+      position: absolute; width: 30px; height: 30px;
+      border-color: var(--accent); border-style: solid; border-width: 0; z-index: 2;
+    }
+    .corner-accent.tl { top: 8px; left: 8px; border-top-width: 2px; border-left-width: 2px; }
+    .corner-accent.br { bottom: 8px; right: 8px; border-bottom-width: 2px; border-right-width: 2px; }
 
-.ops-cards{display:flex;flex-direction:column;gap:3px}
-.op-card{background:var(--card);border:1px solid var(--border);padding:26px 28px;display:flex;gap:18px;align-items:flex-start;transition:border-color .3s}
-.op-card:hover{border-color:rgba(232,98,42,0.3)}
-.op-ico{width:42px;height:42px;border-radius:4px;background:var(--orange-dim);border:1px solid rgba(232,98,42,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.op-ico svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.8}
-.op-card h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;color:var(--white);margin-bottom:6px}
-.op-card p{font-size:.82rem;color:var(--muted);line-height:1.7}
+    .divisions-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+      background: rgba(42,127,255,0.12);
+    }
+    .division-card {
+      background: var(--deep);
+      display: flex; flex-direction: column;
+    }
+    .division-media {
+      height: 170px;
+    }
+    .division-body { padding: 1.8rem; }
+    .division-body .div-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .division-body h4 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem;
+      letter-spacing: 0.04em; color: var(--white); margin-bottom: 0.7rem;
+    }
+    .division-body p {
+      font-size: 0.87rem; font-weight: 300; line-height: 1.7; color: var(--silver-dim);
+    }
 
-/* SERVICES */
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-.svc-card{background:var(--card);border:1px solid var(--border);padding:38px 32px;position:relative;overflow:hidden;transition:border-color .3s}
-.svc-card:hover{border-color:rgba(232,98,42,0.25)}
-.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
-.svc-card:hover::after{transform:scaleX(1)}
-.svc-n{font-family:'Syne',sans-serif;font-weight:800;font-size:3.5rem;line-height:1;color:rgba(255,255,255,0.04);margin-bottom:20px}
-.svc-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white);margin-bottom:12px}
-.svc-card p{font-size:.83rem;color:var(--muted);line-height:1.75}
+    /* ── FOUNDER ── */
+    #founder { background: var(--navy); }
 
-/* UAE EXPANSION */
-.uae-sec{background:var(--surface)}
-.uae-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-.uae-badge{display:inline-flex;align-items:center;gap:8px;background:var(--amber-dim);border:1px solid rgba(212,149,42,0.3);padding:6px 14px;border-radius:2px;font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:28px}
-.uae-badge::before{content:'🇦🇪';font-size:.9rem}
-.uae-sec .sh{margin-bottom:24px}
-.uae-sec p{font-size:.97rem;line-height:1.9;color:var(--muted);margin-bottom:16px}
-.uae-sec p strong{color:var(--soft);font-weight:400}
-.uae-points{display:flex;flex-direction:column;gap:3px;margin-top:36px}
-.upt{background:var(--card);border:1px solid var(--border);padding:20px 24px;display:flex;align-items:center;gap:14px;transition:border-color .3s}
-.upt:hover{border-color:rgba(212,149,42,0.3)}
-.upt-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);flex-shrink:0}
-.upt p{font-size:.87rem;color:var(--soft);line-height:1.6}
-.upt p strong{color:var(--white);font-weight:500}
+    /* ── SOURCING ── */
+    #sourcing {
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    #sourcing::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    .sourcing-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      margin-top: 3rem; align-items: center;
+    }
+    .sourcing-text p {
+      font-size: 1rem; font-weight: 300; line-height: 1.85;
+      color: var(--silver-dim); margin-top: 1.2rem;
+    }
+    .sourcing-points { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .sourcing-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: rgba(42,127,255,0.05);
+      border-left: 2px solid var(--accent);
+    }
+    .sourcing-item h4 {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem;
+      letter-spacing: 0.06em; color: var(--silver); margin-bottom: 0.2rem;
+    }
+    .sourcing-item p { font-size: 0.85rem; color: var(--silver-dim); margin: 0; }
+    .sourcing-visual { height: 380px; border: 1px solid rgba(42,127,255,0.2); position: relative; }
 
-.uae-visual{background:var(--card);border:1px solid var(--border-s);border-radius:5px;overflow:hidden}
-.uv-head{background:var(--deep);padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
-.uv-head span{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.uv-body{padding:22px}
-.corridor{display:flex;flex-direction:column;gap:10px}
-.cor-row{display:flex;align-items:center;gap:12px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:3px}
-.cor-flag{font-size:1.3rem;width:36px;text-align:center}
-.cor-info{flex:1}
-.cor-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;color:var(--white)}
-.cor-sub{font-size:.7rem;color:var(--muted);margin-top:2px}
-.cor-arr{color:var(--orange);font-size:1rem}
-.uv-note{margin-top:14px;padding:14px;background:var(--amber-dim);border:1px solid rgba(212,149,42,0.2);border-radius:3px}
-.uv-note p{font-size:.78rem;color:var(--amber);line-height:1.6}
+    /* ── PRODUCTS ── */
+    #products {
+      background: var(--deep);
+    }
+    .product-division {
+      margin-top: 4rem;
+    }
+    .product-division:first-of-type { margin-top: 3rem; }
+    .pd-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+      margin-bottom: 1.8rem; padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(42,127,255,0.15);
+    }
+    .pd-header h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem;
+      letter-spacing: 0.04em; color: var(--white);
+    }
+    .pd-header span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(42,127,255,0.1);
+    }
+    .product-card {
+      background: var(--deep);
+      transition: background 0.3s;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .product-media { height: 190px; }
+    .product-card-body { padding: 2rem 1.8rem; }
+    .product-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: var(--accent); transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+    .product-card:hover { background: rgba(26,58,107,0.5); }
+    .product-card:hover::after { transform: scaleX(1); }
+    .product-card h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--silver); margin-bottom: 0.7rem;
+    }
+    .product-card p { font-size: 0.85rem; font-weight: 300; line-height: 1.65; color: var(--silver-dim); }
+    .product-specs {
+      margin-top: 1.3rem; padding-top: 1.1rem;
+      border-top: 1px solid rgba(42,127,255,0.15);
+    }
+    .spec-row {
+      display: flex; justify-content: space-between; gap: 0.6rem;
+      font-size: 0.76rem; padding: 0.25rem 0;
+    }
+    .spec-row .key {
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.06em; color: var(--silver-dim);
+    }
+    .spec-row .val { color: var(--accent); font-weight: 600; text-align: right; }
 
-/* TECH */
-.tech-sec{background:var(--deep)}
-.tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
-.tech-card{background:var(--card);border:1px solid var(--border);padding:36px 32px;transition:border-color .3s}
-.tech-card:hover{border-color:rgba(232,98,42,0.2)}
-.tech-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--white);margin-bottom:10px}
-.tech-logo span{color:var(--orange)}
-.tech-card p{font-size:.85rem;color:var(--muted);line-height:1.75}
-.tech-tag{display:inline-flex;margin-top:16px;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(232,98,42,0.25);padding:4px 10px;border-radius:2px}
+    /* ── MARKETS ── */
+    #markets {
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    .markets-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .markets-text p {
+      font-size: 1rem; font-weight: 300; line-height: 1.85;
+      color: var(--silver-dim); margin-top: 1.2rem;
+    }
+    .markets-regions { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+    .region-card {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding: 1.2rem 1.5rem;
+      background: rgba(42,127,255,0.05);
+      border: 1px solid rgba(42,127,255,0.12);
+      transition: border-color 0.2s;
+    }
+    .region-card:hover { border-color: rgba(42,127,255,0.35); }
+    .region-flag { font-size: 2rem; }
+    .region-card h4 {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1rem;
+      letter-spacing: 0.07em; color: var(--silver); text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .region-card p { font-size: 0.83rem; font-weight: 300; line-height: 1.6; color: var(--silver-dim); }
+    .region-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem; }
+    .tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid rgba(42,127,255,0.3);
+      padding: 0.15rem 0.5rem;
+    }
+    .markets-visual-side {
+      position: sticky; top: 100px;
+      display: flex; flex-direction: column; gap: 1.5px;
+    }
+    .markets-media { height: 220px; }
 
-/* CTA */
-.cta{background:var(--orange);padding:80px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px}
-.cta h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,3.2vw,3.2rem);line-height:1.05;color:#fff;max-width:520px}
-.btn-wh{background:#fff;color:var(--orange);padding:15px 38px;font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;white-space:nowrap;transition:background .25s}
-.btn-wh:hover{background:#ffe8de}
+    .reach-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: rgba(42,127,255,0.1);
+    }
+    .reach-stat {
+      background: rgba(13,31,60,0.9);
+      padding: 2rem 1.5rem; text-align: center;
+    }
+    .reach-stat .num {
+      font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem;
+      color: var(--accent); line-height: 1;
+    }
+    .reach-stat .lbl {
+      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--silver-dim); margin-top: 0.4rem;
+    }
 
-/* CONTACT */
-.contact-sec{background:var(--black);padding:80px 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}
-.ct-block h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
-.ct-block p{font-size:.88rem;color:var(--muted);line-height:1.8}
-.ct-block a{color:var(--soft);text-decoration:none}
-.ct-block a:hover{color:var(--white)}
+    /* ── CONTACT ── */
+    #contact {
+      background: linear-gradient(160deg, var(--deep) 0%, var(--navy) 100%);
+      border-top: 1px solid rgba(42,127,255,0.15);
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem;
+      margin-top: 3rem;
+    }
+    .contact-info h3 {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--silver); margin-bottom: 1.5rem;
+    }
+    .info-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1.2rem; padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(42,127,255,0.1);
+    }
+    .info-item:last-child { border-bottom: none; }
+    .info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .info-item h5 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.2rem;
+    }
+    .info-item p { font-size: 0.9rem; font-weight: 300; color: var(--silver-dim); line-height: 1.5; }
 
-footer{background:var(--black);border-top:1px solid var(--border);padding:32px 60px;display:flex;justify-content:space-between;align-items:center}
-.fl{font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
-.fl span{color:var(--orange)}
-footer p{font-size:.68rem;color:var(--muted)}
+    .contact-form {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--silver-dim);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(42,127,255,0.06);
+      border: 1px solid rgba(42,127,255,0.2);
+      color: var(--silver);
+      font-family: 'Barlow', sans-serif; font-size: 0.9rem;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      background: rgba(42,127,255,0.1);
+    }
+    .form-group select option { background: var(--deep); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
 
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
+    .form-submit {
+      width: 100%;
+      background: var(--accent); color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 1rem; border: none; cursor: pointer;
+      margin-top: 0.5rem;
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--bright); }
 
-@media(max-width:960px){
-  nav{padding:16px 22px}
-  .nav-links,.nav-btn{display:none}
-  .hero{grid-template-columns:1fr;padding:105px 22px 56px;gap:40px}
-  .about-grid,.uae-inner,.svc-grid{grid-template-columns:1fr;gap:40px}
-  .tech-grid{grid-template-columns:1fr}
-  .sec{padding:72px 22px}
-  .cta{flex-direction:column;padding:56px 22px}
-  .contact-sec{grid-template-columns:1fr;padding:60px 22px;gap:36px}
-  footer{flex-direction:column;gap:12px;padding:28px 22px;text-align:center}
-}
-</style>
+    /* ── FOOTER ── */
+    footer {
+      background: #060e1a;
+      border-top: 1px solid rgba(42,127,255,0.1);
+      padding: 2.5rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+      letter-spacing: 0.12em; color: var(--white);
+    }
+    .footer-logo span { color: var(--accent); }
+    footer p {
+      font-size: 0.78rem; color: var(--silver-dim);
+      font-weight: 300;
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--silver-dim); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── SCROLL ANIMATION ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      nav ul { display: none; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 0 1.5rem; }
+      .hero-divisions { display: none; }
+      .about-top, .sourcing-grid, .markets-intro, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .divisions-grid, .products-grid { grid-template-columns: 1fr; }
+      .markets-visual-side { position: static; }
+      footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">Bombino<span>.</span>Machin</a>
-  <ul class="nav-links">
+  <div class="logo">Bombino<span>.</span>Corp</div>
+  <ul>
     <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#uae">UAE Expansion</a></li>
-    <li><a href="#tech">Technology</a></li>
+    <li><a href="#sourcing">Sourcing</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#markets">Markets</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
   </ul>
-  <a href="#contact" class="nav-btn">Get a Quote</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div>
-    <div class="eyebrow">Auto Transport & Logistics</div>
-    <h1>
-      MOVING<br>
-      <em>VEHICLES.</em>
-      <small>COAST TO COAST — & BEYOND.</small>
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-line"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Miami, Florida &nbsp;·&nbsp; Bombino Corporation</div>
+    <h1 class="hero-title">
+      Shredding<span class="accent">.</span> Cash Handling<span class="accent">.</span><br>
+      <span class="silver">Biometric</span> Security<span class="accent">.</span>
     </h1>
     <p class="hero-sub">
-      <strong>Bombino Machin Corp</strong> operates as a licensed common and contract carrier across the continental US — and is now expanding into the <strong>UAE market</strong>.
+      Bombino Corporation delivers precision-engineered equipment across three growing
+      industries — industrial shredding, banking &amp; cash-handling systems, and facial-recognition
+      biometric access &amp; attendance — sourced domestically and supplied to clients across
+      the Middle East and Africa.
     </p>
-    <div class="hero-btns">
-      <a href="#services" class="btn-o">Our Services</a>
-      <a href="#uae" class="btn-g">UAE Expansion</a>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="#contact" class="btn-outline">Request a Quote</a>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="map-card">
-      <div class="map-header">
-        <div class="map-dot"></div>
-        <span>Live Fleet Operations</span>
-        <div class="live">Active</div>
-      </div>
-      <div class="map-body">
-        <div class="route">
-          <div class="route-icon ri-us">
-            <svg viewBox="0 0 24 24"><path stroke="var(--orange)" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline stroke="var(--orange)" points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <div class="route-text">
-            <div class="rt-label">Origin Hub</div>
-            <div class="rt-val">Hialeah, Florida</div>
-          </div>
-          <span class="route-status s-active">Base</span>
-        </div>
-        <div class="route">
-          <div class="route-icon ri-truck">
-            <svg viewBox="0 0 24 24" stroke="var(--soft)"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </div>
-          <div class="route-text">
-            <div class="rt-label">Current Route</div>
-            <div class="rt-val">FL → CA Interstate</div>
-          </div>
-          <span class="route-status s-transit">In Transit</span>
-        </div>
-        <div class="route">
-          <div class="route-icon ri-uae">
-            <svg viewBox="0 0 24 24"><circle stroke="var(--amber)" cx="12" cy="12" r="10"/><line stroke="var(--amber)" x1="2" y1="12" x2="22" y2="12"/><path stroke="var(--amber)" d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div class="route-text">
-            <div class="rt-label">New Market</div>
-            <div class="rt-val">Dubai, UAE 🇦🇪</div>
-          </div>
-          <span class="route-status s-new">Expanding</span>
-        </div>
-      </div>
+  <div class="hero-divisions">
+    <div class="hero-div-card">
+      <div class="ico">🗂️</div>
+      <div class="lbl">Shredding &amp; Data Destruction</div>
     </div>
-    <div class="stat-row">
-      <div class="s-box"><div class="s-num">US</div><div class="s-lbl">Licensed Carrier</div></div>
-      <div class="s-box"><div class="s-num">48</div><div class="s-lbl">States Covered</div></div>
-      <div class="s-box"><div class="s-num">UAE</div><div class="s-lbl">Expanding Now</div></div>
+    <div class="hero-div-card">
+      <div class="ico">🏦</div>
+      <div class="lbl">Banking &amp; Cash Handling</div>
+    </div>
+    <div class="hero-div-card">
+      <div class="ico">🆔</div>
+      <div class="lbl">Biometric &amp; Access Control</div>
     </div>
   </div>
 </section>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ti">Auto Transport <b>✦</b></span>
-    <span class="ti">Continental US Operations <b>✦</b></span>
-    <span class="ti">Common & Contract Carrier <b>✦</b></span>
-    <span class="ti">Individual & Dealership Moves <b>✦</b></span>
-    <span class="ti">UAE Market Expansion <b>✦</b></span>
-    <span class="ti">Car Ship IO · Rose Rocket · MoveCars <b>✦</b></span>
-    <span class="ti">Hialeah, Florida USA <b>✦</b></span>
-    <span class="ti">Auto Transport <b>✦</b></span>
-    <span class="ti">Continental US Operations <b>✦</b></span>
-    <span class="ti">Common & Contract Carrier <b>✦</b></span>
-    <span class="ti">Individual & Dealership Moves <b>✦</b></span>
-    <span class="ti">UAE Market Expansion <b>✦</b></span>
-    <span class="ti">Car Ship IO · Rose Rocket · MoveCars <b>✦</b></span>
-    <span class="ti">Hialeah, Florida USA <b>✦</b></span>
-  </div>
-</div>
 
 <!-- ABOUT -->
-<section id="about" class="sec" style="background:var(--surface)">
-  <div class="about-grid">
-    <div class="about-body reveal">
-      <div class="stag">About Us</div>
-      <div class="sh">Carriers You<br>Can Count On.</div>
-      <p>Bombino Machin Corp is a <strong>licensed motor carrier</strong> headquartered in Hialeah, Florida. We operate as both a common and contract carrier, specializing in the transport of automobiles and motor vehicles across the continental United States.</p>
-      <div class="pull">From individual owners shipping a single vehicle to dealerships managing fleet movements — we deliver with reliability and precision.</div>
-      <p>We serve individuals relocating across the country, automotive dealerships managing inventory, and commercial clients with recurring transport needs. Our operations are backed by industry-grade logistics platforms and real-time fleet tracking.</p>
+<section id="about">
+  <div class="about-top">
+    <div class="about-text reveal">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Three Divisions.<br>One Standard.</h2>
+      <p>
+        Bombino Corporation is a Florida-based equipment company committed to bringing
+        engineering excellence to emerging and high-growth markets. What began as an
+        industrial shredding distributor has grown into a diversified equipment group
+        spanning document &amp; data destruction, banking &amp; cash-handling technology,
+        and biometric security systems.
+      </p>
+      <p>
+        All of our equipment is sourced domestically from trusted U.S. manufacturers, giving
+        clients shorter lead times, straightforward support, and equipment built to U.S.
+        quality standards. Our strategic focus remains the Middle East and Africa — regions
+        where financial institutions, government agencies, and enterprises are modernizing
+        rapidly and need reliable equipment backed by real local support.
+      </p>
     </div>
-    <div class="ops-cards reveal">
-      <div class="op-card">
-        <div class="op-ico">
-          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        </div>
-        <div>
-          <h4>Auto Transport</h4>
-          <p>Safe and insured transport of personal and commercial vehicles across all 48 continental US states via open and enclosed carriers.</p>
-        </div>
+    <div class="about-visual reveal reveal-delay-1 ph-wrap">
+      <div class="corner-accent tl"></div>
+      <div class="corner-accent br"></div>
+      <img class="ph-img" src="https://loremflickr.com/900/760/office,warehouse" alt="Generic image placeholder: company office and warehouse" />
+    </div>
+  </div>
+
+  <div class="divisions-grid">
+    <div class="division-card reveal">
+      <div class="division-media ph-wrap">
+        <img class="ph-img" src="https://loremflickr.com/700/420/paper,shredder" alt="Generic image placeholder: industrial shredder" />
       </div>
-      <div class="op-card">
-        <div class="op-ico">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <div>
-          <h4>Dealership Logistics</h4>
-          <p>Dedicated fleet management for automotive dealerships — handling high-volume vehicle transfers, lot-to-lot moves, and auction pickups.</p>
-        </div>
+      <div class="division-body">
+        <div class="div-eyebrow">Division 01</div>
+        <h4>Shredding &amp; Data Destruction</h4>
+        <p>Document, media, and industrial-grade shredding equipment for secure destruction at any scale — from office shredders to twin-shaft recycling systems.</p>
       </div>
-      <div class="op-card">
-        <div class="op-ico">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div>
-          <h4>Real-Time Tracking</h4>
-          <p>Clients get live visibility into their shipment status through our integrated freight management platforms — no guessing, ever.</p>
-        </div>
+    </div>
+    <div class="division-card reveal reveal-delay-1">
+      <div class="division-media ph-wrap">
+        <img class="ph-img" src="https://loremflickr.com/700/420/money,counting" alt="Generic image placeholder: cash counting machine" />
+      </div>
+      <div class="division-body">
+        <div class="div-eyebrow">Division 02</div>
+        <h4>Banking &amp; Cash Handling</h4>
+        <p>Currency counters, sorters, and counterfeit-detection systems built for banks, exchange houses, retail, and cash-in-transit operators.</p>
+      </div>
+    </div>
+    <div class="division-card reveal reveal-delay-2">
+      <div class="division-media ph-wrap">
+        <img class="ph-img" src="https://loremflickr.com/700/420/security,technology" alt="Generic image placeholder: biometric terminal" />
+      </div>
+      <div class="division-body">
+        <div class="div-eyebrow">Division 03</div>
+        <h4>Biometric &amp; Access Control</h4>
+        <p>Facial-recognition time &amp; attendance terminals, access control, and workforce management hardware for offices, factories, and secure sites.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services" class="sec" style="background:var(--deep)">
-  <div class="stag reveal">What We Do</div>
-  <div class="sh reveal">Full-Scope<br>Transport Services.</div>
-  <div class="svc-grid">
-    <div class="svc-card reveal">
-      <div class="svc-n">01</div>
-      <h3>Open Car Transport</h3>
-      <p>The most cost-effective method for standard vehicle transport. Suitable for everyday cars, trucks, and SUVs moving between any two points in the continental US.</p>
+<!-- FOUNDER MESSAGE -->
+<section id="founder" style="padding: 5rem 4rem; position: relative; overflow: hidden;">
+  <div style="position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, rgba(42,127,255,0.18), transparent);"></div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, rgba(42,127,255,0.18), transparent);"></div>
+  <div style="
+    max-width: 780px; margin: 0 auto;
+    display: grid; grid-template-columns: auto 1fr; gap: 3.5rem; align-items: start;
+  ">
+
+    <!-- Avatar / Signature block -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:1rem; padding-top:0.4rem;">
+      <div style="
+        width: 90px; height: 90px; border-radius: 50%;
+        background: linear-gradient(135deg, rgba(26,58,107,0.9), rgba(42,127,255,0.25));
+        border: 2px solid rgba(42,127,255,0.35);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 2.2rem;
+      ">🤵</div>
+      <div style="width: 1px; height: 60px; background: linear-gradient(to bottom, rgba(42,127,255,0.4), transparent);"></div>
     </div>
-    <div class="svc-card reveal">
-      <div class="svc-n">02</div>
-      <h3>Enclosed Transport</h3>
-      <p>Premium enclosed hauling for luxury, classic, and high-value vehicles requiring maximum protection from weather and road debris during transit.</p>
+
+    <!-- Message -->
+    <div>
+      <div class="section-label" style="margin-bottom:1.2rem;">Message from the Founder</div>
+
+      <blockquote style="
+        font-size: 1.05rem; font-weight: 300; line-height: 1.9;
+        color: var(--silver-dim);
+        border: none; margin: 0; padding: 0;
+        font-style: italic;
+      ">
+        "When I took the helm at Bombino Corporation, I saw not just a shredding company —
+        I saw the foundation for something larger. The Middle East and Africa are home to
+        some of the world's most ambitious economies, and their banks, government agencies,
+        and enterprises deserve access to well-built, reliable equipment.
+        <br><br>
+        That belief is why we expanded beyond shredding into banking and cash-handling
+        technology, and into biometric access &amp; attendance systems — all sourced from
+        trusted manufacturers here in the United States. We're not simply distributing
+        machines — we're building the infrastructure that lets institutions in our markets
+        operate securely, efficiently, and with confidence.
+        <br><br>
+        Under new management, Bombino is committed to one thing above all else: earning the
+        trust of every client, every partner, and every market we enter. This is only the
+        beginning."
+      </blockquote>
+
+      <div style="margin-top: 2rem; display:flex; align-items:center; gap:1.2rem; flex-wrap: wrap;">
+        <div>
+          <div style="
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem; letter-spacing: 0.08em;
+            color: var(--white); line-height: 1;
+          ">Sergio Rivera</div>
+          <div style="
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--accent); margin-top: 0.35rem;
+          ">Founder &amp; Owner — Bombino Corporation</div>
+        </div>
+        <div style="flex:1; height:1px; background: linear-gradient(to right, rgba(42,127,255,0.3), transparent); min-width: 40px;"></div>
+        <div style="
+          font-family: 'Barlow Condensed', sans-serif;
+          font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+          color: var(--silver-dim); text-align:right;
+        ">Miami, Florida<br>2026</div>
+      </div>
     </div>
-    <div class="svc-card reveal">
-      <div class="svc-n">03</div>
-      <h3>Dealership Fleet Moves</h3>
-      <p>Scalable, scheduled vehicle transfers for dealerships — from single-unit trades to full fleet relocations across multiple states.</p>
-    </div>
-    <div class="svc-card reveal">
-      <div class="svc-n">04</div>
-      <h3>Door-to-Door Delivery</h3>
-      <p>We pick up and deliver directly to your location — home, office, or dealership lot — anywhere within our operational territory.</p>
-    </div>
-    <div class="svc-card reveal">
-      <div class="svc-n">05</div>
-      <h3>Terminal-to-Terminal</h3>
-      <p>Drop off and collect at our designated terminal locations for a streamlined, efficient option with flexible scheduling.</p>
-    </div>
-    <div class="svc-card reveal">
-      <div class="svc-n">06</div>
-      <h3>Contract Carrier</h3>
-      <p>Dedicated contract arrangements for businesses with recurring transport needs — consistent capacity, priority scheduling, and volume rates.</p>
-    </div>
+
   </div>
 </section>
 
-<!-- UAE EXPANSION -->
-<section id="uae" class="uae-sec sec">
-  <div class="uae-inner">
-    <div class="reveal">
-      <div class="uae-badge">Now Entering the UAE</div>
-      <div class="sh">Taking Our<br>Operations <span style="color:var(--amber)">Global.</span></div>
-      <p>Having built a strong operational foundation across the continental United States, Bombino Machin Corp is now <strong>extending its transport and logistics operations to the UAE market</strong>.</p>
-      <p>The UAE — and Dubai in particular — represents one of the world's most active markets for vehicle import, luxury auto transport, and dealership logistics. We are positioning to serve this market with the same reliability that defines our US operations.</p>
-      <div class="uae-points">
-        <div class="upt">
-          <div class="upt-dot"></div>
-          <p><strong>Vehicle Import Logistics</strong> — Supporting individuals and businesses importing vehicles into the UAE market.</p>
-        </div>
-        <div class="upt">
-          <div class="upt-dot"></div>
-          <p><strong>Dealership Partnerships</strong> — Connecting with UAE automotive dealerships for inventory transport and fleet management.</p>
-        </div>
-        <div class="upt">
-          <div class="upt-dot"></div>
-          <p><strong>Luxury & High-Value Auto Transport</strong> — Enclosed, premium transport suited to the UAE's premium vehicle market.</p>
-        </div>
-        <div class="upt">
-          <div class="upt-dot"></div>
-          <p><strong>US–UAE Corridor</strong> — Facilitating vehicle exports from the United States to the UAE and broader GCC region.</p>
-        </div>
-      </div>
-    </div>
-    <div class="uae-visual reveal">
-      <div class="uv-head">
-        <span>🌐 &nbsp;Operational Corridors</span>
-      </div>
-      <div class="uv-body">
-        <div class="corridor">
-          <div class="cor-row">
-            <div class="cor-flag">🇺🇸</div>
-            <div class="cor-info">
-              <div class="cor-name">Continental United States</div>
-              <div class="cor-sub">48 states · Common & Contract Carrier</div>
-            </div>
-            <div class="cor-arr">✓</div>
+<!-- SOURCING -->
+<section id="sourcing">
+  <div class="reveal">
+    <div class="section-label">Sourcing &amp; Support</div>
+    <h2 class="section-title">Sourced &amp; Supported<br>In The USA</h2>
+  </div>
+
+  <div class="sourcing-grid">
+    <div class="sourcing-text reveal">
+      <p>
+        Every product we sell — across shredding, cash handling, and biometric security —
+        is sourced from trusted manufacturers based in the United States. That means shorter
+        lead times, consistent quality control, and a support team that can move quickly when
+        clients need parts, service, or answers.
+      </p>
+      <div class="sourcing-points">
+        <div class="sourcing-item">
+          <div>
+            <h4>Domestic Sourcing</h4>
+            <p>All equipment is sourced and quality-checked through U.S.-based manufacturing partners before it ships.</p>
           </div>
-          <div style="text-align:center;padding:8px 0;font-size:.7rem;color:var(--muted);letter-spacing:.1em">↕ &nbsp;EXPANDING CORRIDOR</div>
-          <div class="cor-row" style="border-color:rgba(212,149,42,0.3)">
-            <div class="cor-flag">🇦🇪</div>
-            <div class="cor-info">
-              <div class="cor-name">United Arab Emirates</div>
-              <div class="cor-sub">Dubai · Abu Dhabi · GCC Region</div>
-            </div>
-            <div style="font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);background:var(--amber-dim);border:1px solid rgba(212,149,42,0.3);padding:3px 9px;border-radius:2px">New</div>
+        </div>
+        <div class="sourcing-item">
+          <div>
+            <h4>Consistent Quality Standards</h4>
+            <p>Every division follows the same rigorous testing and inspection process before equipment leaves our facility.</p>
           </div>
         </div>
-        <div class="uv-note">
-          <p>🚗 &nbsp;The UAE is among the world's highest per-capita vehicle markets — a strategic expansion for premium auto transport services.</p>
+        <div class="sourcing-item">
+          <div>
+            <h4>Responsive After-Sales Support</h4>
+            <p>Dedicated support and spare-parts logistics for clients across the Middle East and Africa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sourcing-visual reveal reveal-delay-1 ph-wrap">
+      <img class="ph-img" src="https://loremflickr.com/700/760/factory,warehouse" alt="Generic image placeholder: U.S. manufacturing and logistics" />
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="reveal">
+    <div class="section-label">Our Products</div>
+    <h2 class="section-title">Product Range<br>By Division</h2>
+  </div>
+
+  <!-- DIVISION 1: SHREDDING -->
+  <div class="product-division">
+    <div class="pd-header reveal">
+      <h3>Shredding &amp; Data Destruction</h3>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-media ph-wrap"><img class="ph-img" src="https://loremflickr.com/600/380/document,shredder" alt="Generic image placeholder: industrial document shredder" /></div>
+        <div class="product-card-body">
+          <h4>Industrial Document Shredders</h4>
+          <p>High-throughput shredders for secure document destruction in government, banking, and corporate environments.</p>
+          <div class="product-specs">
+            <div class="spec-row"><span class="key">Security Level</span><span class="val">P-4 to P-7</span></div>
+            <div class="spec-row"><span class="key">Throughput</span><span class="val">Up to 500 sheets/min</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-media ph-wrap"><img class="ph-img" src="https://loremflickr.com/600/380/harddrive,electronics" alt="Generic image placeholder: hard drive destroyer" /></div>
+        <div class="product-card-body">
+          <h4>Hard Drive &amp; Media Destroyers</h4>
+          <p>Purpose-built for IT asset destruction and data-security compliance across drives, optical media, and cards.</p>
+          <div class="product-specs">
+            <div class="spec-row"><span class="key">Security Level</span><span class="val">E-6 (NIST 800-88)</span></div>
+            <div class="spec-row"><span class="key">Capacity</span><span class="val">500+ drives/hr</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-media ph-wrap"><img class="ph-img" src="https://loremflickr.com/600/380/industrial,machine" alt="Generic image placeholder: heavy-duty industrial shredder" /></div>
+        <div class="product-card-body">
+          <h4>Heavy-Duty Material Shredders</h4>
+          <p>Twin-shaft industrial shredders for plastics, wood, e-waste, and bulky materials in continuous operation.</p>
+          <div class="product-specs">
+            <div class="spec-row"><span class="key">Motor Power</span><span class="val">15 – 200 kW</span></div>
+            <div class="spec-row"><span class="key">Chamber Width</span><span class="val">Up to 2,000 mm</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVISION 2: BANKING & CASH HANDLING -->
+  <div class="product-division">
+    <div class="pd-header reveal">
+      <h3>Banking &amp; Cash Handling</h3>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-media ph-wrap"><img class="ph-img" src="https://loremflickr.com/600/380/cash,counting" alt="Generic image placeholder: cash counting machine" /></div>
+        <div class="product-card-body">
+          <h4>Cash Counting Machines</h4>
+          <p>High-speed banknote counters with counterfeit detection for banks, retail, and cash-handling centers.</p>
+          <div class="product-specs">
+            <div class="spec-row"><span class="key">Counting Speed</span><span class="val">Up to 1,500 notes/min</span></div>
+            <div class="spec-row"><span class="key">Detection</span><span class="val">UV / MG / IR</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-media ph-wrap"><img class="ph-img" src="https://loremflickr.com/600/380/currency,banknotes" alt="Generic image placeholder: currency sorting machine" /></div>
+        <div class="product-card-body">
+          <h4>Mixed Denomination Sorters</h4>
+          <p>Automated sorting by denomination, orientation, and fitness for large-volume cash centers.</p>
+          <div class="product-specs">
+            <div class="spec-row"><span class="key">Pockets</span><span class="val">Up to 8-way sort</span></div>
+            <div class="spec-row"><span class="key">Throughput</span><span class="val">Up to 1,200 notes/min</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-media ph-wrap"><img class="ph-img" src="https://loremflickr.com/600/380/coins,money" alt="Generic image placeholder: coin counting machine" /></div>
+        <div class="product-card-body">
+          <h4>Coin Counting &amp; Sorting Systems</h4>
+          <p>Rapid coin counting, sorting, and bagging equipment for banks, transit operators, and retail back offices.</p>
+          <div class="product-specs">
+            <div class="spec-row"><span class="key">Capacity</span><span class="val">Up to 3,000 coins/min</span></div>
+            <div class="spec-row"><span class="key">Denominations</span><span class="val">Multi-currency</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVISION 3: BIOMETRIC & ACCESS CONTROL -->
+  <div class="product-division">
+    <div class="pd-header reveal">
+      <h3>Biometric &amp; Access Control</h3>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-media ph-wrap"><img class="ph-img" src="https://loremflickr.com/600/380/facerecognition,technology" alt="Generic image placeholder: facial recognition time and attendance terminal" /></div>
+        <div class="product-card-body">
+          <h4>Facial Recognition Time &amp; Attendance</h4>
+          <p>Contactless clock-in terminals using facial recognition, built for factories, offices, and multi-site workforces.</p>
+          <div class="product-specs">
+            <div class="spec-row"><span class="key">Recognition Speed</span><span class="val">&lt; 0.3 sec</span></div>
+            <div class="spec-row"><span class="key">Capacity</span><span class="val">Up to 50,000 users</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-media ph-wrap"><img class="ph-img" src="https://loremflickr.com/600/380/keypad,door" alt="Generic image placeholder: biometric access control system" /></div>
+        <div class="product-card-body">
+          <h4>Biometric Access Control</h4>
+          <p>Door and turnstile access-control systems combining face recognition with card and PIN credentials.</p>
+          <div class="product-specs">
+            <div class="spec-row"><span class="key">Auth Modes</span><span class="val">Face / Card / PIN</span></div>
+            <div class="spec-row"><span class="key">Integration</span><span class="val">HR &amp; Payroll APIs</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-media ph-wrap"><img class="ph-img" src="https://loremflickr.com/600/380/dashboard,office" alt="Generic image placeholder: workforce management software dashboard" /></div>
+        <div class="product-card-body">
+          <h4>Workforce Management Software</h4>
+          <p>Cloud or on-premise dashboards for attendance, shift scheduling, and site-level reporting across facilities.</p>
+          <div class="product-specs">
+            <div class="spec-row"><span class="key">Deployment</span><span class="val">Cloud / On-Prem</span></div>
+            <div class="spec-row"><span class="key">Reporting</span><span class="val">Real-Time</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TECHNOLOGY -->
-<section id="tech" class="tech-sec sec">
-  <div class="stag reveal">Powered By</div>
-  <div class="sh reveal">Industry-Grade<br>Logistics Tech.</div>
-  <div class="tech-grid">
-    <div class="tech-card reveal">
-      <div class="tech-logo">Car Ship <span>IO</span></div>
-      <p>We are listed and operate on Car Ship IO's carrier network, giving customers direct access to book transport, verify our credentials, and track shipments in real time through their platform.</p>
-      <span class="tech-tag">Freight Management</span>
+<!-- MARKETS -->
+<section id="markets">
+  <div class="markets-intro">
+    <div class="markets-text reveal">
+      <div class="section-label">Our Markets</div>
+      <h2 class="section-title">Middle East<br>&amp; Africa</h2>
+      <p>
+        Bombino Corporation is strategically positioned to serve two of the world's most
+        dynamic growth regions. Our sales, logistics, and support teams deliver both
+        large-scale institutional contracts and responsive local service across all
+        three divisions.
+      </p>
+      <div class="markets-regions">
+        <div class="region-card reveal reveal-delay-1">
+          <div class="region-flag">🌙</div>
+          <div>
+            <h4>Middle East</h4>
+            <p>Serving GCC nations, Levant, and North Africa — banks and exchange houses adopting cash-handling automation, and government &amp; enterprise sites rolling out biometric access control.</p>
+            <div class="region-tags">
+              <span class="tag">UAE</span>
+              <span class="tag">Saudi Arabia</span>
+              <span class="tag">Qatar</span>
+              <span class="tag">Kuwait</span>
+              <span class="tag">Jordan</span>
+              <span class="tag">Egypt</span>
+            </div>
+          </div>
+        </div>
+        <div class="region-card reveal reveal-delay-2">
+          <div class="region-flag">🌍</div>
+          <div>
+            <h4>Africa</h4>
+            <p>Targeting Sub-Saharan and East African markets where data-security regulation, cash-handling formalization, and workforce digitization are all accelerating.</p>
+            <div class="region-tags">
+              <span class="tag">Nigeria</span>
+              <span class="tag">South Africa</span>
+              <span class="tag">Kenya</span>
+              <span class="tag">Ghana</span>
+              <span class="tag">Ethiopia</span>
+              <span class="tag">Tanzania</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tech-card reveal">
-      <div class="tech-logo">Rose <span>Rocket</span></div>
-      <p>Rose Rocket powers our carrier operations management — handling dispatch, freight lifecycle, customer updates, and internal coordination through their purpose-built TMS platform.</p>
-      <span class="tech-tag">Transport Management</span>
-    </div>
-    <div class="tech-card reveal">
-      <div class="tech-logo">Move<span>Cars</span></div>
-      <p>Clients can request quotes, verify our DOT credentials, and initiate bookings through MoveCars — one of the leading carrier directories and freight forwarding hubs in the US auto transport industry.</p>
-      <span class="tech-tag">Carrier Directory</span>
-    </div>
-    <div class="tech-card reveal">
-      <div class="tech-logo" style="font-size:1rem;color:var(--muted)">USDOT <span style="color:var(--orange)">#3791970</span></div>
-      <p>Fully licensed and registered with the United States Department of Transportation. Our USDOT number is publicly verifiable through official federal carrier registries and partner platforms.</p>
-      <span class="tech-tag">Verified & Licensed</span>
+
+    <div class="markets-visual-side reveal reveal-delay-1">
+      <div class="markets-media ph-wrap">
+        <img class="ph-img" src="https://loremflickr.com/700/440/office,bank" alt="Generic image placeholder: client site deployment" />
+      </div>
+      <div class="reach-stats">
+        <div class="reach-stat">
+          <div class="num">30+</div>
+          <div class="lbl">Target Countries</div>
+        </div>
+        <div class="reach-stat">
+          <div class="num">3</div>
+          <div class="lbl">Product Divisions</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- CTA -->
-<div class="cta">
-  <h2>Ready to ship your vehicle or partner with us in the UAE?</h2>
-  <a href="#contact" class="btn-wh">Get a Quote</a>
-</div>
 
 <!-- CONTACT -->
-<div id="contact" class="contact-sec">
-  <div class="ct-block">
-    <h4>Headquarters</h4>
-    <p>18290 Mediterranean Blvd<br>Apt 502<br>Hialeah, FL 33015<br>United States</p>
+<section id="contact">
+  <div class="reveal">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Start A Conversation</h2>
   </div>
-  <div class="ct-block">
-    <h4>Book Transport</h4>
-    <p>
-      <a href="https://www.movecars.com/companies/dot/3791970/bombino-machin-corp" target="_blank">MoveCars Directory</a><br>
-      <a href="https://www.carshipio.com/public/carrier/3791970/bombino-machin-corp" target="_blank">Car Ship IO Profile</a><br>
-      <a href="https://www.roserocket.com/trucking-company/bombino-machin-corp-usdot-3791970" target="_blank">Rose Rocket Profile</a>
-    </p>
-  </div>
-  <div class="ct-block">
-    <h4>UAE Inquiries</h4>
-    <p>For UAE market partnerships,<br>dealership logistics, and<br>GCC expansion opportunities:<br><a href="mailto:info@bombinomachincorp.com">info@bombinomachincorp.com</a></p>
-  </div>
-</div>
 
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Bombino Corporation</h3>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div>
+          <h5>Principal Address</h5>
+          <p>14862 SW 143 Terrace<br>Miami, FL 33196</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div>
+          <h5>Email</h5>
+          <p>info@bombino-corp.com</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div>
+          <h5>Phone</h5>
+          <p>+1 (305) 000-0000</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🤝</div>
+        <div>
+          <h5>Partnership Inquiries</h5>
+          <p>partners@bombino-corp.com</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🌍</div>
+        <div>
+          <h5>Regional Coverage</h5>
+          <p>Middle East · Africa · North Africa</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal reveal-delay-1">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="John" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Company / Organization</label>
+        <input type="text" placeholder="Your company name" />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@company.com" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Country / Region</label>
+          <select>
+            <option value="">Select your region</option>
+            <optgroup label="Middle East">
+              <option>UAE</option>
+              <option>Saudi Arabia</option>
+              <option>Qatar</option>
+              <option>Kuwait</option>
+              <option>Jordan</option>
+              <option>Oman</option>
+              <option>Bahrain</option>
+              <option>Iraq</option>
+            </optgroup>
+            <optgroup label="Africa">
+              <option>Egypt</option>
+              <option>Nigeria</option>
+              <option>South Africa</option>
+              <option>Kenya</option>
+              <option>Ghana</option>
+              <option>Ethiopia</option>
+              <option>Tanzania</option>
+              <option>Other Africa</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>United States</option>
+              <option>Other</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Division / Product Interest</label>
+          <select>
+            <option value="">Select product type</option>
+            <optgroup label="Shredding &amp; Data Destruction">
+              <option>Document Shredders</option>
+              <option>Hard Drive Destroyers</option>
+              <option>Heavy-Duty Shredders</option>
+            </optgroup>
+            <optgroup label="Banking &amp; Cash Handling">
+              <option>Cash Counting Machines</option>
+              <option>Currency Sorters</option>
+              <option>Coin Counting Systems</option>
+            </optgroup>
+            <optgroup label="Biometric &amp; Access Control">
+              <option>Facial Recognition Time &amp; Attendance</option>
+              <option>Biometric Access Control</option>
+              <option>Workforce Management Software</option>
+            </optgroup>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your requirements, order size, or any questions..."></textarea>
+      </div>
+      <button class="form-submit" onclick="alert('Thank you! A Bombino representative will be in touch shortly.')">
+        Send Inquiry ⟶
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="fl">Bombino<span>.</span>Machin Corp</div>
-  <p>© 2021–2026 · Hialeah, FL · USDOT #3791970 · All rights reserved</p>
+  <div>
+    <div class="footer-logo">Bombino<span>.</span>Corp</div>
+    <p style="margin-top:0.4rem;">Miami, FL &nbsp;·&nbsp; Shredding · Cash Handling · Biometrics &nbsp;·&nbsp; Global Markets</p>
+  </div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#sourcing">Sourcing</a>
+    <a href="#products">Products</a>
+    <a href="#markets">Markets</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p>© 2026 Bombino Corporation. All rights reserved.</p>
 </footer>
 
 <script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('in'), i * 85);
-      obs.unobserve(e.target);
-    }
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Active nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--bright)' : '';
+    });
   });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
